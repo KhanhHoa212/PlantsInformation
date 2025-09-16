@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Lookup - Plant Information Database</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Tempus Dominus CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.19/dist/css/tempus-dominus.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-flower1 text-success me-2 fs-3"></i>
+                <span class="fw-bold text-success">Plant Lookup</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Plant Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="plants.html?category=flowers">Flowers</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=trees">Trees</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=herbs">Herbs</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=vegetables">Vegetables</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Regions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="plants.html?region=tropical">Tropical</a></li>
+                            <li><a class="dropdown-item" href="plants.html?region=temperate">Temperate</a></li>
+                            <li><a class="dropdown-item" href="plants.html?region=arid">Arid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="care-guides.html">Care Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="references.html">References</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex me-3" style="width: 300px;">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search plants..." id="searchInput">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- User Account -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person"></i> Account
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html">Login</a></li>
+                        <li><a class="dropdown-item" href="register.html">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 fw-bold text-white mb-4">Discover the World of Plants</h1>
+                        <p class="lead text-white mb-5">Search through thousands of plant species and learn about their care, origins, and uses</p>
+                        
+                        <!-- Large Search Box -->
+                        <div class="search-box-large mb-4">
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control" placeholder="Search by plant name or scientific name..." id="heroSearch">
+                                <button class="btn btn-success" type="button">
+                                    <i class="bi bi-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Filter Buttons -->
+                        <div class="quick-filters">
+                            <h5 class="text-white mb-3">Quick Filters:</h5>
+                            <div class="d-flex flex-wrap justify-content-center gap-2">
+                                <button class="btn btn-outline-light filter-btn" data-bs-toggle="tooltip" title="Filter by plant category" data-filter="category">
+                                    <i class="bi bi-grid"></i> Category
+                                </button>
+                                <button class="btn btn-outline-light filter-btn" data-bs-toggle="tooltip" title="Filter by climate requirements" data-filter="climate">
+                                    <i class="bi bi-thermometer-sun"></i> Climate
+                                </button>
+                                <button class="btn btn-outline-light filter-btn" data-bs-toggle="tooltip" title="Filter by soil type" data-filter="soil">
+                                    <i class="bi bi-moisture"></i> Soil
+                                </button>
+                                <button class="btn btn-outline-light filter-btn" data-bs-toggle="tooltip" title="Filter by geographic region" data-filter="region">
+                                    <i class="bi bi-geo-alt"></i> Region
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Plants Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold text-success">Featured Plants</h2>
+                    <p class="lead text-muted">Discover some of our most popular plant species</p>
+                </div>
+            </div>
+            
+            <div class="row g-4" id="featuredPlants">
+                <!-- Plant cards will be populated by JavaScript -->
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="plants.html" class="btn btn-success btn-lg">
+                    <i class="bi bi-arrow-right"></i> View All Plants
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <i class="bi bi-flower1 text-success display-4 mb-3"></i>
+                        <h3 class="fw-bold">2,500+</h3>
+                        <p class="text-muted">Plant Species</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <i class="bi bi-globe text-success display-4 mb-3"></i>
+                        <h3 class="fw-bold">150+</h3>
+                        <p class="text-muted">Countries</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <i class="bi bi-book text-success display-4 mb-3"></i>
+                        <h3 class="fw-bold">500+</h3>
+                        <p class="text-muted">Care Guides</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <i class="bi bi-people text-success display-4 mb-3"></i>
+                        <h3 class="fw-bold">10,000+</h3>
+                        <p class="text-muted">Users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-flower1 text-success me-2"></i>
+                        Plant Lookup
+                    </h5>
+                    <p class="text-muted">Your comprehensive resource for plant information, care guides, and botanical knowledge.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="plants.html" class="text-muted text-decoration-none">Plants</a></li>
+                        <li><a href="care-guides.html" class="text-muted text-decoration-none">Care Guides</a></li>
+                        <li><a href="references.html" class="text-muted text-decoration-none">References</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Categories</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="plants.html?category=flowers" class="text-muted text-decoration-none">Flowers</a></li>
+                        <li><a href="plants.html?category=trees" class="text-muted text-decoration-none">Trees</a></li>
+                        <li><a href="plants.html?category=herbs" class="text-muted text-decoration-none">Herbs</a></li>
+                        <li><a href="plants.html?category=vegetables" class="text-muted text-decoration-none">Vegetables</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p class="text-muted mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        info@plantlookup.com
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="bi bi-phone me-2"></i>
+                        +1 (555) 123-4567
+                    </p>
+                    <p class="text-muted">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        123 Garden St, Plant City, PC 12345
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2024 Plant Lookup. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Tempus Dominus JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.19/dist/js/tempus-dominus.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

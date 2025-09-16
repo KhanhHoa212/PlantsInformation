@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose - Plant Detail - Plant Lookup</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation (same as other pages) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-flower1 text-success me-2 fs-3"></i>
+                <span class="fw-bold text-success">Plant Lookup</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Plant Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="plants.html?category=flowers">Flowers</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=trees">Trees</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=herbs">Herbs</a></li>
+                            <li><a class="dropdown-item" href="plants.html?category=vegetables">Vegetables</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Regions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="plants.html?region=tropical">Tropical</a></li>
+                            <li><a class="dropdown-item" href="plants.html?region=temperate">Temperate</a></li>
+                            <li><a class="dropdown-item" href="plants.html?region=arid">Arid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="care-guides.html">Care Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="references.html">References</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex me-3" style="width: 300px;">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search plants..." id="searchInput">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- User Account -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person"></i> Account
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html">Login</a></li>
+                        <li><a class="dropdown-item" href="register.html">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="bg-light py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="plants.html">Plants</a></li>
+                    <li class="breadcrumb-item"><a href="plants.html?category=flowers">Flowers</a></li>
+                    <li class="breadcrumb-item active">Rose</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Plant Detail Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Plant Images Carousel -->
+                <div class="col-lg-6 mb-4">
+                    <div id="plantCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#plantCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#plantCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#plantCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner rounded">
+                            <div class="carousel-item active">
+                                <img src="/placeholder.svg?height=400&width=600" class="d-block w-100" alt="Rose main image">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/placeholder.svg?height=400&width=600" class="d-block w-100" alt="Rose bush">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/placeholder.svg?height=400&width=600" class="d-block w-100" alt="Rose garden">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#plantCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#plantCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Plant Basic Info -->
+                <div class="col-lg-6 mb-4">
+                    <div class="plant-header">
+                        <h1 class="display-5 fw-bold text-success mb-2">Rose</h1>
+                        <p class="lead text-muted mb-3"><em>Rosa rubiginosa</em></p>
+                        
+                        <div class="plant-badges mb-4">
+                            <span class="badge bg-success me-2">Flowers</span>
+                            <span class="badge bg-info me-2">Temperate</span>
+                            <span class="badge bg-warning me-2">Loamy Soil</span>
+                            <span class="badge bg-secondary">Spring Planting</span>
+                        </div>
+
+                        <div class="plant-quick-info">
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="info-item">
+                                        <i class="bi bi-geo-alt text-success"></i>
+                                        <strong>Origin:</strong> Europe, Asia
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-item">
+                                        <i class="bi bi-arrow-repeat text-success"></i>
+                                        <strong>Growth Cycle:</strong> Perennial
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-item">
+                                        <i class="bi bi-rulers text-success"></i>
+                                        <strong>Height:</strong> 1-3 meters
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-item">
+                                        <i class="bi bi-sun text-success"></i>
+                                        <strong>Sun:</strong> Full sun
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons mt-4">
+                            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                                <i class="bi bi-download"></i> Export Info
+                            </button>
+                            <button class="btn btn-outline-success me-2">
+                                <i class="bi bi-heart"></i> Add to Favorites
+                            </button>
+                            <button class="btn btn-outline-secondary">
+                                <i class="bi bi-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Information Tabs -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="plantTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button">
+                                <i class="bi bi-info-circle"></i> General Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="climate-tab" data-bs-toggle="tab" data-bs-target="#climate" type="button">
+                                <i class="bi bi-thermometer"></i> Climate
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="soil-tab" data-bs-toggle="tab" data-bs-target="#soil" type="button">
+                                <i class="bi bi-moisture"></i> Soil
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care" type="button">
+                                <i class="bi bi-heart-pulse"></i> Care Guide
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="diseases-tab" data-bs-toggle="tab" data-bs-target="#diseases" type="button">
+                                <i class="bi bi-bug"></i> Diseases
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="uses-tab" data-bs-toggle="tab" data-bs-target="#uses" type="button">
+                                <i class="bi bi-star"></i> Uses
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="references-tab" data-bs-toggle="tab" data-bs-target="#references" type="button">
+                                <i class="bi bi-book"></i> References
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-4" id="plantTabContent">
+                        <!-- General Info Tab -->
+                        <div class="tab-pane fade show active" id="general" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">General Information</h5>
+                                    <p class="card-text">
+                                        The rose is a woody perennial flowering plant of the genus Rosa, in the family Rosaceae. 
+                                        There are over three hundred species and tens of thousands of cultivars. They form a group 
+                                        of plants that can be erect shrubs, climbing, or trailing, with stems that are often armed 
+                                        with sharp prickles.
+                                    </p>
+                                    
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <h6>Physical Characteristics</h6>
+                                            <ul>
+                                                <li>Thorny stems with compound leaves</li>
+                                                <li>Flowers typically have 5 petals</li>
+                                                <li>Colors range from white to deep red</li>
+                                                <li>Strong, pleasant fragrance</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Growth Habits</h6>
+                                            <ul>
+                                                <li>Blooms from spring to fall</li>
+                                                <li>Requires regular pruning</li>
+                                                <li>Can live for decades with proper care</li>
+                                                <li>Attracts bees and butterflies</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Climate Tab -->
+                        <div class="tab-pane fade" id="climate" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Climate Requirements</h5>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Temperature Range</h6>
+                                            <p>Optimal growing temperature: 15-25°C (59-77°F)</p>
+                                            <p>Winter hardiness: Most varieties can survive -15°C (5°F)</p>
+                                            
+                                            <h6>Humidity</h6>
+                                            <p>Moderate humidity levels (40-60%)</p>
+                                            <p>Good air circulation prevents fungal diseases</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Sunlight</h6>
+                                            <p>Requires 6+ hours of direct sunlight daily</p>
+                                            <p>Morning sun is especially important</p>
+                                            
+                                            <h6>Rainfall</h6>
+                                            <p>Annual rainfall: 600-1000mm</p>
+                                            <p>Consistent moisture without waterlogging</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Soil Tab -->
+                        <div class="tab-pane fade" id="soil" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Soil Requirements</h5>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Soil Type</h6>
+                                            <ul>
+                                                <li><strong>Preferred:</strong> Well-draining loamy soil</li>
+                                                <li><strong>Acceptable:</strong> Clay-loam, sandy-loam</li>
+                                                <li><strong>Avoid:</strong> Heavy clay, pure sand</li>
+                                            </ul>
+                                            
+                                            <h6>pH Level</h6>
+                                            <p>Optimal pH: 6.0-7.0 (slightly acidic to neutral)</p>
+                                            <p>Tolerance range: 5.5-7.5</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Drainage</h6>
+                                            <p>Excellent drainage is essential</p>
+                                            <p>Avoid waterlogged conditions</p>
+                                            
+                                            <h6>Organic Matter</h6>
+                                            <p>Rich in organic matter</p>
+                                            <p>Regular compost additions beneficial</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Care Guide Tab -->
+                        <div class="tab-pane fade" id="care" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Care Guide</h5>
+                                    
+                                    <div class="accordion" id="careAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#watering">
+                                                    <i class="bi bi-droplet text-primary me-2"></i> Watering
+                                                </button>
+                                            </h2>
+                                            <div id="watering" class="accordion-collapse collapse show" data-bs-parent="#careAccordion">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Water deeply 1-2 times per week</li>
+                                                        <li>Water at soil level to avoid wetting leaves</li>
+                                                        <li>Increase frequency during hot, dry periods</li>
+                                                        <li>Reduce watering in winter</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fertilizing">
+                                                    <i class="bi bi-egg text-warning me-2"></i> Fertilizing
+                                                </button>
+                                            </h2>
+                                            <div id="fertilizing" class="accordion-collapse collapse" data-bs-parent="#careAccordion">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Apply balanced fertilizer (10-10-10) in early spring</li>
+                                                        <li>Monthly feeding during growing season</li>
+                                                        <li>Add compost annually</li>
+                                                        <li>Stop fertilizing 6 weeks before first frost</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pruning">
+                                                    <i class="bi bi-scissors text-danger me-2"></i> Pruning
+                                                </button>
+                                            </h2>
+                                            <div id="pruning" class="accordion-collapse collapse" data-bs-parent="#careAccordion">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Prune in late winter/early spring</li>
+                                                        <li>Remove dead, diseased, and weak canes</li>
+                                                        <li>Cut at 45-degree angle above outward-facing bud</li>
+                                                        <li>Deadhead spent blooms regularly</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diseases Tab -->
+                        <div class="tab-pane fade" id="diseases" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Common Diseases & Solutions</h5>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="disease-item">
+                                                <h6 class="text-danger">Black Spot</h6>
+                                                <p><strong>Symptoms:</strong> Black spots on leaves, yellowing</p>
+                                                <p><strong>Treatment:</strong> Fungicide spray, improve air circulation</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="disease-item">
+                                                <h6 class="text-danger">Powdery Mildew</h6>
+                                                <p><strong>Symptoms:</strong> White powdery coating on leaves</p>
+                                                <p><strong>Treatment:</strong> Neem oil, reduce humidity</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="disease-item">
+                                                <h6 class="text-danger">Aphids</h6>
+                                                <p><strong>Symptoms:</strong> Small green insects on new growth</p>
+                                                <p><strong>Treatment:</strong> Insecticidal soap, ladybugs</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="disease-item">
+                                                <h6 class="text-danger">Rust</h6>
+                                                <p><strong>Symptoms:</strong> Orange spots on leaf undersides</p>
+                                                <p><strong>Treatment:</strong> Copper fungicide, remove affected leaves</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Uses Tab -->
+                        <div class="tab-pane fade" id="uses" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Uses & Benefits</h5>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Ornamental Uses</h6>
+                                            <ul>
+                                                <li>Garden borders and hedges</li>
+                                                <li>Cut flower arrangements</li>
+                                                <li>Landscape focal points</li>
+                                                <li>Container gardening</li>
+                                            </ul>
+                                            
+                                            <h6>Culinary Uses</h6>
+                                            <ul>
+                                                <li>Rose petals in salads</li>
+                                                <li>Rose water for cooking</li>
+                                                <li>Rose hip jams and teas</li>
+                                                <li>Flavoring for desserts</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Medicinal Properties</h6>
+                                            <ul>
+                                                <li>High in Vitamin C (rose hips)</li>
+                                                <li>Anti-inflammatory properties</li>
+                                                <li>Aromatherapy benefits</li>
+                                                <li>Skin care applications</li>
+                                            </ul>
+                                            
+                                            <h6>Commercial Uses</h6>
+                                            <ul>
+                                                <li>Perfume and cosmetics</li>
+                                                <li>Essential oil production</li>
+                                                <li>Natural dyes</li>
+                                                <li>Potpourri and crafts</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- References Tab -->
+                        <div class="tab-pane fade" id="references" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">References & Further Reading</h5>
+                                    
+                                    <div class="reference-list">
+                                        <div class="reference-item mb-3">
+                                            <h6>Scientific Literature</h6>
+                                            <ul>
+                                                <li><a href="#" target="_blank">American Rose Society - Rose Care Guide</a></li>
+                                                <li><a href="#" target="_blank">Royal Horticultural Society - Rosa Species</a></li>
+                                                <li><a href="#" target="_blank">Journal of Plant Pathology - Rose Diseases</a></li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="reference-item mb-3">
+                                            <h6>Books & Publications</h6>
+                                            <ul>
+                                                <li>"The Rose Bible" by Rayford Clayton Reddell</li>
+                                                <li>"Roses For Dummies" by Lance Walheim</li>
+                                                <li>"The Well-Tended Perennial Garden" by Tracy DiSabato-Aust</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="reference-item">
+                                            <h6>Online Resources</h6>
+                                            <ul>
+                                                <li><a href="#" target="_blank">Missouri Botanical Garden - Rose Information</a></li>
+                                                <li><a href="#" target="_blank">University Extension Rose Care</a></li>
+                                                <li><a href="#" target="_blank">International Rose Database</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Export Modal -->
+    <div class="modal fade" id="exportModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Export Plant Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Choose your preferred export format:</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-danger" onclick="exportToPDF()">
+                            <i class="bi bi-file-pdf"></i> Export as PDF
+                        </button>
+                        <button class="btn btn-outline-success" onclick="exportToExcel()">
+                            <i class="bi bi-file-excel"></i> Export as Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-flower1 text-success me-2"></i>
+                        Plant Lookup
+                    </h5>
+                    <p class="text-muted">Your comprehensive resource for plant information, care guides, and botanical knowledge.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="plants.html" class="text-muted text-decoration-none">Plants</a></li>
+                        <li><a href="care-guides.html" class="text-muted text-decoration-none">Care Guides</a></li>
+                        <li><a href="references.html" class="text-muted text-decoration-none">References</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Categories</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="plants.html?category=flowers" class="text-muted text-decoration-none">Flowers</a></li>
+                        <li><a href="plants.html?category=trees" class="text-muted text-decoration-none">Trees</a></li>
+                        <li><a href="plants.html?category=herbs" class="text-muted text-decoration-none">Herbs</a></li>
+                        <li><a href="plants.html?category=vegetables" class="text-muted text-decoration-none">Vegetables</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p class="text-muted mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        info@plantlookup.com
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="bi bi-phone me-2"></i>
+                        +1 (555) 123-4567
+                    </p>
+                    <p class="text-muted">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        123 Garden St, Plant City, PC 12345
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2024 Plant Lookup. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Custom JS -->
+    <script src="plant-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+/* Custom CSS for Plant Lookup Website */
+
+:root {
+  --primary-green: #198754;
+  --light-green: #d1e7dd;
+  --dark-green: #146c43;
+  --accent-brown: #8b5a3c;
+  --light-gray: #f8f9fa;
+  --medium-gray: #6c757d;
+}
+
+/* Global Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Navigation Styles */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-green) !important;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/placeholder.svg?height=600&width=1200")
+    center / cover;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-section .text-white {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.hero-overlay {
+  width: 100%;
+}
+
+.search-box-large .form-control {
+  border-radius: 50px 0 0 50px;
+  border: 3px solid var(--primary-green);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.search-box-large .btn {
+  border-radius: 0 50px 50px 0;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: 3px solid var(--primary-green);
+  border-left: none;
+}
+
+.quick-filters .filter-btn {
+  border-radius: 25px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.quick-filters .filter-btn:hover {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+/* Plant Cards */
+.plant-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.plant-card img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.plant-card:hover img {
+  transform: scale(1.05);
+}
+
+.plant-card .card-body {
+  padding: 1.5rem;
+  color: #333;
+}
+
+.plant-card .card-title {
+  color: var(--primary-green);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.plant-card .scientific-name {
+  font-style: italic;
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Plant Detail Styles */
+.plant-header .display-5 {
+  color: var(--primary-green);
+}
+
+.plant-badges .badge {
+  font-size: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 15px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-item i {
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Tabs Styling */
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: 10px 10px 0 0;
+  color: var(--medium-gray);
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--primary-green);
+  color: white;
+  border-color: var(--primary-green);
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: transparent;
+  color: var(--primary-green);
+}
+
+/* Filter Sidebar */
+.card-header.bg-success {
+  background-color: var(--primary-green) !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+/* Stats Section */
+.stat-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+.stat-item h3 {
+  color: var(--primary-green);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Disease Items */
+.disease-item {
+  padding: 1rem;
+  border-left: 4px solid var(--primary-green);
+  background-color: var(--light-gray);
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 1rem;
+}
+
+.disease-item h6 {
+  margin-bottom: 0.5rem;
+}
+
+/* Reference Links */
+.reference-list a {
+  color: var(--primary-green);
+  text-decoration: none;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+/* Pagination */
+.pagination .page-link {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.pagination .page-link:hover {
+  color: white;
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+/* Footer */
+footer {
+  background-color: #212529 !important;
+  color: #ffffff !important;
+}
+
+footer h5 {
+  color: #ffffff !important;
+}
+
+footer p,
+footer li,
+footer a {
+  color: #adb5bd !important;
+}
+
+footer a:hover {
+  color: var(--primary-green) !important;
+}
+
+footer .social-links a {
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  color: #adb5bd !important;
+}
+
+footer .social-links a:hover {
+  color: var(--primary-green) !important;
+}
+
+/* Breadcrumb and other potential issues */
+.breadcrumb-item a {
+  color: var(--primary-green);
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: var(--medium-gray);
+}
+
+/* Card text on light backgrounds */
+.card-body {
+  color: #333;
+}
+
+.card-text {
+  color: #555;
+}
+
+/* Dropdown menu text */
+.dropdown-menu {
+  color: #333;
+}
+
+.dropdown-item {
+  color: #333;
+}
+
+.dropdown-item:hover {
+  background-color: var(--light-green);
+  color: var(--primary-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+    text-align: center;
+  }
+
+  .search-box-large {
+    margin-bottom: 2rem;
+  }
+
+  .quick-filters .filter-btn {
+    margin-bottom: 0.5rem;
+  }
+
+  .plant-card img {
+    height: 180px;
+  }
+
+  .carousel-item img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .display-6 {
+    font-size: 1.5rem;
+  }
+
+  .search-box-large .form-control,
+  .search-box-large .btn {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Tooltip Customization */
+.tooltip-inner {
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: var(--primary-green);
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: var(--primary-green);
+}
+
+/* Popover Customization */
+.popover {
+  border-color: var(--primary-green);
+}
+
+.popover-header {
+  background-color: var(--primary-green);
+  color: white;
+  border-bottom-color: var(--primary-green);
+}
+
+/* Form Enhancements */
+.form-control:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.form-select:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+/* Button Enhancements */
+.btn-success {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+}
+
+.btn-outline-success {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
