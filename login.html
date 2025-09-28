@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Information - Login</title>
+    <link rel="stylesheet" href="loginstyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <script>
+        // Configure SweetAlert theme
+        if (typeof Swal !== 'undefined') {
+            Swal.mixin({
+                customClass: {
+                    confirmButton: 'swal-confirm-btn',
+                    cancelButton: 'swal-cancel-btn'
+                },
+                buttonsStyling: false
+            });
+        }
+    </script>
+
+    <style>
+        .swal-confirm-btn {
+            background: linear-gradient(135deg, #4a7c59 0%, #5d8a6b 100%) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 25px !important;
+            padding: 12px 30px !important;
+            font-weight: 600 !important;
+            margin: 0 8px !important;
+        }
+        .swal-cancel-btn {
+            background: #f3f4f6 !important;
+            color: #6b7280 !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 25px !important;
+            padding: 12px 30px !important;
+            font-weight: 600 !important;
+            margin: 0 8px !important;
+        }
+    </style>
+
+    <div class="container" id="container">
+         <!-- Sign-Up Form  -->
+        <div class="form-container sign-up-container">
+            <form method="post" asp-page-handler="Register">
+                <h1><i class="fas fa-seedling" style="color: #4a7c59; margin-right: 10px;"></i>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email to register</span>
+
+                <input asp-for="Register.Username" placeholder="Name (Nickname)" />
+                <span asp-validation-for="Register.Username" class="field-error"></span>
+
+                <input asp-for="Register.Email" placeholder="Email" />
+                <span asp-validation-for="Register.Email" class="field-error"></span>
+
+                <input asp-for="Register.Password" type="password" placeholder="Password" />
+                <span asp-validation-for="Register.Password" class="field-error"></span>
+
+                <input asp-for="Register.ConfirmPassword" type="password" placeholder="Confirm Password" />
+                <span asp-validation-for="Register.ConfirmPassword" class="field-error"></span>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Sign-In Form  -->
+        <div class="form-container sign-in-container">
+            <form method="post" asp-page-handler="Login">
+                <h1><i class="fas fa-leaf" style="color: #4a7c59; margin-right: 10px;"></i>Welcome Back</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+
+                <input asp-for="Login.Email" placeholder="Email" />
+                <span asp-validation-for="Login.Email" class="field-error"></span>
+
+                <input asp-for="Login.Password" type="password" placeholder="Password" />
+                <span asp-validation-for="Login.Password" class="field-error"></span>
+                <a href="/Account/ForgotPassword">Forgot your password?</a>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Overlay panels  -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Continue your journey exploring the wonderful world of plants and gardening</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                     Updated content to match plant theme 
+                    <h1>Hello, Plant Lover!</h1>
+                    <p>Join our community and discover amazing information about plants and gardening</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.isRegisterPanelActive = false; // Default value for demo
+    </script>
+
+    
+    <script src="loginscript.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Management - Plant Information Lookup Admin</title>
+    
+     Bootstrap & Libraries 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="admin-style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-flower1 text-success me-2 fs-4"></i>
+                <span class="fw-bold text-success">Plant Lookup Admin</span>
+            </a>
+ 
+            <button class="btn btn-outline-success d-lg-none" type="button" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="navbar-nav ms-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+                        data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle me-2"></i>
+                        <span>Admin User</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-house me-2"></i>Main Site</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-lg-2 d-lg-block sidebar collapse" id="sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-house me-2"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-people me-2"></i>User Management
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-flower2 me-2"></i>Plant Management
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-tags me-2"></i>Plant Categories
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-globe2 me-2"></i>Regions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-brightness-high me-2"></i>Climates
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-graph-up me-2"></i>Reports & Export
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-lg-10 ms-sm-auto px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2 text-success">Plant Management</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#addPlantWizardModal">
+                            <i class="bi bi-plus-circle me-1"></i>Add Plant
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="plantSearch" placeholder="Search plants...">
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" id="plantCategoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="flowering">Flowering Plants</option>
+                            <option value="trees">Trees</option>
+                            <option value="herbs">Herbs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="plantsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Plant Name</th>
+                                        <th>Scientific Name</th>
+                                        <th>Category</th>
+                                        <th>Created At</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/placeholder.svg?height=50&width=50" alt="Rose" class="plant-thumb"></td>
+                                        <td>Rose</td>
+                                        <td><em>Rosa rubiginosa</em></td>
+                                        <td><span class="badge bg-success">Flowering Plants</span></td>
+                                        <td>2024-01-15</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/placeholder.svg?height=50&width=50" alt="Oak" class="plant-thumb"></td>
+                                        <td>Oak Tree</td>
+                                        <td><em>Quercus robur</em></td>
+                                        <td><span class="badge bg-success">Trees</span></td>
+                                        <td>2024-01-10</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addPlantWizardModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content wizard-card">
+                <div class="wizard-header">
+                    <h2 class="wizard-title">Add New Plant</h2>
+                    <p class="wizard-subtitle">Complete the form in 4 easy steps to add a new plant to your database</p>
+                </div>
+
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Basic Info</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Environment</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Health</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Images & Review</div>
+                    </div>
+                </div>
+
+                <div class="wizard-content">
+                    <form id="plantWizardForm">
+                         Step 1: Basic Information 
+                        <div class="step-content active" data-step="1">
+                            <div class="step-header">
+                                <h3 class="step-title">Basic Plant Information</h3>
+                                <p class="step-description">Enter the fundamental details about the plant</p>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Plant Name *</label>
+                                        <input type="text" class="form-control-modern" name="plantName" required placeholder="e.g., Rose">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Scientific Name *</label>
+                                        <input type="text" class="form-control-modern" name="scientificName" required placeholder="e.g., Rosa rubiginosa">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Category *</label>
+                                        <select class="form-select-modern" name="category" required>
+                                            <option value="">Select Category</option>
+                                            <option value="flowering">Flowering Plants</option>
+                                            <option value="trees">Trees</option>
+                                            <option value="herbs">Herbs</option>
+                                            <option value="shrubs">Shrubs</option>
+                                            <option value="grasses">Grasses</option>
+                                            <option value="ferns">Ferns</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Climate *</label>
+                                        <select class="form-select-modern" name="climate" required>
+                                            <option value="">Select Climate</option>
+                                            <option value="tropical">Tropical</option>
+                                            <option value="temperate">Temperate</option>
+                                            <option value="arid">Arid</option>
+                                            <option value="mediterranean">Mediterranean</option>
+                                            <option value="continental">Continental</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-modern">
+                                <label class="form-label-modern">Growth Cycle *</label>
+                                <select class="form-select-modern" name="growthCycle" required>
+                                    <option value="">Select Growth Cycle</option>
+                                    <option value="annual">Annual (1 year)</option>
+                                    <option value="perennial">Perennial (Multiple years)</option>
+                                    <option value="biennial">Biennial (2 years)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="step-content" data-step="2">
+                            <div class="step-header">
+                                <h3 class="step-title">Growth & Environment</h3>
+                                <p class="step-description">Select suitable soil types and regions for this plant</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Soil Types</label>
+                                        <div class="checkbox-group">
+                                            <div class="checkbox-search">
+                                                <input type="text" placeholder="Search soil types..." id="soilSearch">
+                                            </div>
+                                            <div id="soilCheckboxes">
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="clay" id="soil-clay">
+                                                    <label for="soil-clay">Clay Soil</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="sandy" id="soil-sandy">
+                                                    <label for="soil-sandy">Sandy Soil</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="loamy" id="soil-loamy">
+                                                    <label for="soil-loamy">Loamy Soil</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="peaty" id="soil-peaty">
+                                                    <label for="soil-peaty">Peaty Soil</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="chalky" id="soil-chalky">
+                                                    <label for="soil-chalky">Chalky Soil</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="soilTypes[]" value="silty" id="soil-silty">
+                                                    <label for="soil-silty">Silty Soil</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Regions</label>
+                                        <div class="checkbox-group">
+                                            <div class="checkbox-search">
+                                                <input type="text" placeholder="Search regions..." id="regionSearch">
+                                            </div>
+                                            <div id="regionCheckboxes">
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="north" id="region-north">
+                                                    <label for="region-north">Northern Region</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="south" id="region-south">
+                                                    <label for="region-south">Southern Region</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="central" id="region-central">
+                                                    <label for="region-central">Central Region</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="coastal" id="region-coastal">
+                                                    <label for="region-coastal">Coastal Region</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="mountain" id="region-mountain">
+                                                    <label for="region-mountain">Mountain Region</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" name="regions[]" value="highland" id="region-highland">
+                                                    <label for="region-highland">Highland Region</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-content" data-step="3">
+                            <div class="step-header">
+                                <h3 class="step-title">Plant Health & Diseases</h3>
+                                <p class="step-description">Select common diseases and health issues for this plant</p>
+                            </div>
+
+                            <div class="form-group-modern">
+                                <label class="form-label-modern">Common Diseases</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-search">
+                                        <input type="text" placeholder="Search diseases..." id="diseaseSearch">
+                                    </div>
+                                    <div id="diseaseCheckboxes">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="powdery-mildew" id="disease-powdery">
+                                            <label for="disease-powdery">Powdery Mildew</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="root-rot" id="disease-root">
+                                            <label for="disease-root">Root Rot</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="leaf-spot" id="disease-leaf">
+                                            <label for="disease-leaf">Leaf Spot</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="aphids" id="disease-aphids">
+                                            <label for="disease-aphids">Aphids</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="spider-mites" id="disease-mites">
+                                            <label for="disease-mites">Spider Mites</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="scale-insects" id="disease-scale">
+                                            <label for="disease-scale">Scale Insects</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="bacterial-blight" id="disease-blight">
+                                            <label for="disease-blight">Bacterial Blight</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" name="diseases[]" value="fungal-infection" id="disease-fungal">
+                                            <label for="disease-fungal">Fungal Infection</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-content" data-step="4">
+                            <div class="step-header">
+                                <h3 class="step-title">Images & Final Review</h3>
+                                <p class="step-description">Upload plant images and review all information</p>
+                            </div>
+
+                            <div class="form-group-modern">
+                                <label class="form-label-modern">Plant Images</label>
+                                <div class="image-upload-area" id="imageUploadArea">
+                                    <div class="upload-icon">
+                                        <i class="bi bi-cloud-upload"></i>
+                                    </div>
+                                    <div class="upload-text">Drag & drop images here or click to browse</div>
+                                    <div class="upload-subtext">Supports: JPG, PNG, WebP (Max 5MB each)</div>
+                                    <input type="file" id="imageInput" name="images[]" multiple accept="image/*" style="display: none;">
+                                </div>
+                                <div id="imagePreview" class="mt-3"></div>
+                            </div>
+
+                            <div class="review-section">
+                                <h4 class="review-title">Review Plant Information</h4>
+                                <div id="reviewContent">
+                                     Review content will be populated by JavaScript 
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="wizard-navigation">
+                    <button type="button" class="btn-wizard btn-wizard-secondary" id="prevBtn" style="display: none;">
+                        <i class="bi bi-arrow-left me-2"></i>Previous
+                    </button>
+                    <div class="ms-auto d-flex gap-2">
+                        <button type="button" class="btn-wizard btn-wizard-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn-wizard btn-wizard-primary" id="nextBtn">
+                            Next<i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="plant-wizard.js"></script>
+</body>
+</html>
